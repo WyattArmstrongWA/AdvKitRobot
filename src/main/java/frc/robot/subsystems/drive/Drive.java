@@ -1,4 +1,3 @@
-
 package frc.robot.subsystems.drive;
 
 import static edu.wpi.first.units.Units.*;
@@ -69,7 +68,7 @@ public class Drive extends SubsystemBase {
 
     // Start threads (no-op for each if no signals have been created)
     PhoenixOdometryThread.getInstance().start();
-   
+
     // Configure AutoBuilder for PathPlanner
     AutoBuilder.configureHolonomic(
         this::getPose,
@@ -206,8 +205,10 @@ public class Drive extends SubsystemBase {
       headings[i] = getModuleTranslations()[i].getAngle();
     }
     kinematics.resetHeadings(headings);
+
     stop();
   }
+
 
   /** Returns a command to run a quasistatic test in the specified direction. */
   public Command sysIdQuasistatic(SysIdRoutine.Direction direction) {

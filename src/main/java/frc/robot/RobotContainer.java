@@ -1,8 +1,5 @@
-
 package frc.robot;
 
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -35,13 +32,14 @@ public class RobotContainer {
     switch (Constants.currentMode) {
       case REAL:
         // Real robot, instantiate hardware IO implementations
-        
-        drive = new Drive(
-            new GyroIOPigeon2(true),
-            new ModuleIOTalonFX(0),
-            new ModuleIOTalonFX(1),
-            new ModuleIOTalonFX(2),
-            new ModuleIOTalonFX(3));
+
+        drive =
+            new Drive(
+                new GyroIOPigeon2(true),
+                new ModuleIOTalonFX(0),
+                new ModuleIOTalonFX(1),
+                new ModuleIOTalonFX(2),
+                new ModuleIOTalonFX(3));
         break;
 
       case SIM:
@@ -67,8 +65,6 @@ public class RobotContainer {
         break;
     }
 
-
-
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -87,15 +83,6 @@ public class RobotContainer {
             () -> -controller.getLeftX(),
             () -> -controller.getRightX()));
     controller.x().onTrue(Commands.runOnce(drive::stopWithX, drive));
-    controller
-        .b()
-        .onTrue(
-            Commands.runOnce(
-                    () ->
-                        drive.setPose(
-                            new Pose2d(drive.getPose().getTranslation(), new Rotation2d())),
-                    drive)
-                .ignoringDisable(true));
   }
 
   /**

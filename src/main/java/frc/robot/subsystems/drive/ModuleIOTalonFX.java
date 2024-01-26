@@ -1,4 +1,3 @@
-
 package frc.robot.subsystems.drive;
 
 import com.ctre.phoenix6.BaseStatusSignal;
@@ -18,7 +17,6 @@ import java.util.Queue;
 /**
  * Module IO implementation for Talon FX drive motor controller, Talon FX turn motor controller, and
  * CANcoder
- *
  *
  * <p>To calibrate the absolute encoder offsets, point the modules straight (such that forward
  * motion on the drive motor will propel the robot forward) and copy the reported values from the
@@ -55,28 +53,28 @@ public class ModuleIOTalonFX implements ModuleIO {
   public ModuleIOTalonFX(int index) {
     switch (index) {
       case 0:
-        driveTalon = new TalonFX(1);
-        turnTalon = new TalonFX(2);
-        cancoder = new CANcoder(9);
-        absoluteEncoderOffset = new Rotation2d(0.0); // MUST BE CALIBRATED
+        driveTalon = new TalonFX(1, "CAN0");
+        turnTalon = new TalonFX(2, "CAN0");
+        cancoder = new CANcoder(9, "CAN0");
+        absoluteEncoderOffset = new Rotation2d(-2.214); // MUST BE CALIBRATED
         break;
       case 1:
-        driveTalon = new TalonFX(3);
-        turnTalon = new TalonFX(4);
-        cancoder = new CANcoder(10);
-        absoluteEncoderOffset = new Rotation2d(0.0); // MUST BE CALIBRATED
+        driveTalon = new TalonFX(3, "CAN0");
+        turnTalon = new TalonFX(4, "CAN0");
+        cancoder = new CANcoder(10, "CAN0");
+        absoluteEncoderOffset = new Rotation2d(2.180); // MUST BE CALIBRATED
         break;
       case 2:
-        driveTalon = new TalonFX(5);
-        turnTalon = new TalonFX(6);
-        cancoder = new CANcoder(11);
-        absoluteEncoderOffset = new Rotation2d(0.0); // MUST BE CALIBRATED
+        driveTalon = new TalonFX(5, "CAN0");
+        turnTalon = new TalonFX(6, "CAN0");
+        cancoder = new CANcoder(11, "CAN0");
+        absoluteEncoderOffset = new Rotation2d(1.012); // MUST BE CALIBRATED
         break;
       case 3:
-        driveTalon = new TalonFX(7);
-        turnTalon = new TalonFX(8);
-        cancoder = new CANcoder(12);
-        absoluteEncoderOffset = new Rotation2d(0.0); // MUST BE CALIBRATED
+        driveTalon = new TalonFX(7, "CAN0");
+        turnTalon = new TalonFX(8, "CAN0");
+        cancoder = new CANcoder(12, "CAN0");
+        absoluteEncoderOffset = new Rotation2d(0.097); // MUST BE CALIBRATED
         break;
       default:
         throw new RuntimeException("Invalid module index");
